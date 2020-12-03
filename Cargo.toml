@@ -2,7 +2,7 @@
 name = "dynstr"
 version = "0.1.0"
 license = "MIT"
-authors = ["Parsa Ghadimi <qti3eqti3e@gmail.com>"]
+authors = ["Parsa Ghadimi <me@qti3e.com>"]
 edition = "2018"
 readme = "README.md"
 keywords = ["string"]
