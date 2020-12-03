@@ -131,10 +131,10 @@ impl DynamicString {
     }
 }
 
-impl std::ops::Add<DynamicString> for DynamicString {
+impl<T: Into<DynamicString>> std::ops::Add<T> for DynamicString {
     type Output = DynamicString;
 
-    fn add(self, rhs: DynamicString) -> Self::Output {
-        self.append(rhs)
+    fn add(self, rhs: T) -> Self::Output {
+        self.append(rhs.into())
     }
 }

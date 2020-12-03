@@ -1,7 +1,15 @@
 [package]
 name = "dynstr"
 version = "0.1.0"
+license = "MIT"
 authors = ["Parsa Ghadimi <qti3eqti3e@gmail.com>"]
 edition = "2018"
+readme = "README.md"
+keywords = ["string"]
+categories = ["data-structures"]
+description="A string implementation optimized for manipulations."
+repository = "https://github.com/qti3e/dynstr/"
+homepage = "https://github.com/qti3e/dynstr/"
+documentation = "https://docs.rs/dynstr/0.1.0/dynstr/"
 
 [dependencies]

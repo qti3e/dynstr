@@ -1,6 +1,6 @@
 use super::DynamicStringIterator;
 use std::cmp;
-use std::fmt::{Debug, Formatter};
+use std::fmt;
 use std::hash::{Hash, Hasher};
 use std::sync::Arc;
 
@@ -201,8 +201,16 @@ impl cmp::PartialOrd for DynamicString {
 
 impl cmp::Eq for DynamicString {}
 
-impl Debug for DynamicString {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+impl fmt::Debug for DynamicString {
+    #[inline]
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        String::from(self).fmt(f)
+    }
+}
+
+impl fmt::Display for DynamicString {
+    #[inline]
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         String::from(self).fmt(f)
     }
 }
