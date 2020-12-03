@@ -1,5 +1,5 @@
-![Rust](https://github.com/qti3e/dynstr/workflows/Rust/badge.svg)
-![Docs](https://docs.rs/dynstr/badge.svg)
+[![Rust](https://github.com/qti3e/dynstr/workflows/Rust/badge.svg)](https://github.com/qti3e/dynstr)
+[![Docs](https://docs.rs/dynstr/badge.svg)](https://docs.rs/dynstr)
 
 # dynstr
 
