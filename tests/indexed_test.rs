@@ -1,7 +1,7 @@
 use dynstr::{DynamicString, IndexedString};
 
 #[test]
-fn test_basic() {
+fn basic() {
     let str = DynamicString::new("0123456789");
     let indexed = IndexedString::new(str);
     assert_eq!(indexed.at(0), '0' as u16);
@@ -10,7 +10,7 @@ fn test_basic() {
 }
 
 #[test]
-fn test_cons() {
+fn cons() {
     let str = DynamicString::ConsString {
         first: Box::new(DynamicString::new("012345")),
         second: Box::new(DynamicString::new("6789")),
@@ -25,7 +25,7 @@ fn test_cons() {
 }
 
 #[test]
-fn test_slice() {
+fn slice() {
     let str = DynamicString::SlicedString {
         root: Box::new(DynamicString::new("aa0123456789")),
         start: 2,
@@ -39,7 +39,7 @@ fn test_slice() {
 
 #[test]
 #[should_panic]
-fn test_slice_panic() {
+fn slice_panic() {
     let str = DynamicString::SlicedString {
         root: Box::new(DynamicString::new("aa0123456789")),
         start: 2,
@@ -50,7 +50,7 @@ fn test_slice_panic() {
 }
 
 #[test]
-fn test_slice_cons() {
+fn slice_cons() {
     let sliced = DynamicString::SlicedString {
         root: Box::new(DynamicString::new("aa0123456789")),
         start: 2,
@@ -75,7 +75,7 @@ fn test_slice_cons() {
 }
 
 #[test]
-fn test_slice_cons_slice() {
+fn slice_cons_slice() {
     let sliced = DynamicString::SlicedString {
         root: Box::new(DynamicString::new("aa0123456789")),
         start: 2,

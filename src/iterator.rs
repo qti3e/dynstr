@@ -2,7 +2,7 @@ use super::DynamicString;
 use std::cmp;
 
 /// The StringIterator can be used to iterate over characters in a DynamicString.
-pub struct StringIterator {
+pub struct DynamicStringIterator {
     /// The current active chunk of data that we're reading.
     active_chunk: Option<Box<DynamicString>>,
     /// Current index in the active chunk, calling `next` will return the n-th
@@ -18,7 +18,7 @@ pub struct StringIterator {
     size_hint: usize,
 }
 
-impl StringIterator {
+impl DynamicStringIterator {
     /// Advance to the next chunk.
     #[inline(always)]
     fn advance_chunk(&mut self) {
@@ -83,7 +83,7 @@ impl StringIterator {
     }
 }
 
-impl Iterator for StringIterator {
+impl Iterator for DynamicStringIterator {
     type Item = u16;
 
     #[inline]
@@ -204,11 +204,11 @@ impl Iterator for StringIterator {
 
 impl IntoIterator for DynamicString {
     type Item = u16;
-    type IntoIter = StringIterator;
+    type IntoIter = DynamicStringIterator;
 
     fn into_iter(self) -> Self::IntoIter {
         let len = self.len();
-        StringIterator {
+        DynamicStringIterator {
             active_chunk: Some(Box::new(self)),
             chunk_index: 0,
             end: None,

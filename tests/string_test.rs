@@ -1,7 +1,7 @@
 use dynstr::DynamicString;
 
 #[test]
-fn test_basic() {
+fn basic() {
     let str = "Hello World!";
     let ec = DynamicString::new(str);
     assert_eq!(ec.len(), 12);
@@ -10,7 +10,7 @@ fn test_basic() {
 }
 
 #[test]
-fn test_unicode() {
+fn unicode() {
     let str = "😴";
     let ec = DynamicString::new(str);
     assert_eq!(ec.len(), 2);
@@ -25,7 +25,7 @@ fn test_unicode() {
 }
 
 #[test]
-fn test_iter_cons() {
+fn iter_cons() {
     let simple = Box::new(DynamicString::new("012345"));
     let cons = DynamicString::ConsString {
         first: simple.clone(),
@@ -35,7 +35,7 @@ fn test_iter_cons() {
 }
 
 #[test]
-fn test_iter_slice() {
+fn iter_slice() {
     let simple = Box::new(DynamicString::new("0123456789"));
     let slice = DynamicString::SlicedString {
         root: simple.clone(),
@@ -60,7 +60,7 @@ fn test_iter_slice() {
 }
 
 #[test]
-fn test_iter_cons_slice() {
+fn iter_cons_slice() {
     let cons = Box::new(DynamicString::ConsString {
         first: Box::new(DynamicString::new("012345")),
         second: Box::new(DynamicString::new("6789a")),
@@ -127,7 +127,7 @@ fn test_iter_cons_slice() {
 }
 
 #[test]
-fn test_iter_cons_cons_slice() {
+fn iter_cons_cons_slice() {
     let cons = DynamicString::ConsString {
         first: Box::new(DynamicString::new("012")),
         second: Box::new(DynamicString::ConsString {
@@ -162,7 +162,7 @@ fn test_iter_cons_cons_slice() {
 }
 
 #[test]
-fn test_iter_slice_slice() {
+fn iter_slice_slice() {
     // 2345678
     let root = Box::new(DynamicString::SlicedString {
         root: Box::new(DynamicString::new("0123456789")),
@@ -204,7 +204,7 @@ fn test_iter_slice_slice() {
 }
 
 #[test]
-fn test_iter_slice_slice_slice() {
+fn iter_slice_slice_slice() {
     let root = Box::new(DynamicString::SlicedString {
         // 0123456789
         root: Box::new(DynamicString::SlicedString {
@@ -239,7 +239,7 @@ fn test_iter_slice_slice_slice() {
 }
 
 #[test]
-fn test_nth() {
+fn nth() {
     let sentence = {
         let str = "In formal language theory and computer programming, string concatenation is the operation of joining character strings end-to-end. For example, the concatenation of \"snow\" and \"ball\" is \"snowball\". Wikipedia";
         let long = Box::new(DynamicString::new(str));
@@ -305,7 +305,7 @@ fn test_nth() {
 }
 
 #[test]
-fn test_hash() {
+fn hash() {
     use std::collections::hash_map::DefaultHasher;
     use std::hash::{Hash, Hasher};
 
@@ -353,7 +353,7 @@ fn test_hash() {
 }
 
 #[test]
-fn test_eq() {
+fn eq() {
     assert_eq!(DynamicString::new("Hello"), DynamicString::new("Hello"));
     assert_ne!(DynamicString::new("Hello"), DynamicString::new("World"));
 
@@ -382,34 +382,5 @@ fn test_eq() {
             length: 2
         },
         DynamicString::new("😴")
-    );
-}
-
-#[test]
-fn test_index_of() {
-    assert_eq!(
-        DynamicString::new("Hello World").index_of(&DynamicString::new("ell")),
-        Some(1)
-    );
-    assert_eq!(
-        DynamicString::new("Hello World").index_of(&DynamicString::new("Wor")),
-        Some(6)
-    );
-    assert_eq!(
-        DynamicString::new("Hello World").index_of(&DynamicString::new("elle")),
-        None
-    );
-}
-
-#[test]
-fn test_split() {
-    let source = DynamicString::new("01#-;23#-;45");
-    let result = source.split(DynamicString::new("#-;"), None);
-    assert_eq!(
-        result
-            .iter()
-            .map(|x| String::from(x))
-            .collect::<Vec<String>>(),
-        vec!["01", "23", "45"]
     );
 }

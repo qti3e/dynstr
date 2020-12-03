@@ -18,7 +18,7 @@ enum Chunk {
 }
 
 impl IndexedString {
-    /// Create a new IndexedString from a DynamicString.
+    /// Creates a new IndexedString from a DynamicString.
     pub fn new(string: DynamicString) -> Self {
         let mut chunks = Vec::<(usize, Chunk)>::new();
         let mut index = 0;
@@ -131,6 +131,8 @@ impl IndexedString {
     }
 
     /// Return the character at the given index.
+    /// # Panics
+    /// If the index is greater than or equal to the length.
     #[inline]
     pub fn at(&self, index: usize) -> u16 {
         if index >= self.length {
@@ -148,7 +150,7 @@ impl IndexedString {
 }
 
 impl Chunk {
-    #[inline(always)]
+    #[inline]
     pub fn get(&self, index: usize) -> u16 {
         match self {
             Chunk::Char(c) => {
@@ -166,5 +168,17 @@ fn search(chunks: &Vec<(usize, Chunk)>, index: usize) -> usize {
     match chunks.binary_search_by_key(&index, |&(index, _)| index) {
         Ok(n) => n,
         Err(n) => n - 1,
+    }
+}
+
+impl From<DynamicString> for IndexedString {
+    fn from(string: DynamicString) -> Self {
+        IndexedString::new(string)
+    }
+}
+
+impl From<&DynamicString> for IndexedString {
+    fn from(string: &DynamicString) -> Self {
+        IndexedString::new(string.clone())
     }
 }
