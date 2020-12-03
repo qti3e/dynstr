@@ -1,4 +1,5 @@
-[![Workflow Status](https://github.com/qti3e/dynstr/workflows/main/badge.svg)](https://github.com/qti3e/dynstr/actions?query=workflow%3A%22main%22)
+![Rust](https://github.com/qti3e/dynstr/workflows/Rust/badge.svg)
+![Docs](https://docs.rs/dynstr/badge.svg)
 
 # dynstr
 
