@@ -12,4 +12,5 @@ repository = "https://github.com/qti3e/dynstr/"
 homepage = "https://github.com/qti3e/dynstr/"
 documentation = "https://docs.rs/dynstr/0.1.0/dynstr/"
 
-[dependencies]
+[badges]
+github = { repository = "qti3e/dynstr" }
