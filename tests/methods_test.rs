@@ -5,6 +5,9 @@ fn append() {
     let s0 = DynamicString::new("Foo");
     let s1 = DynamicString::new("Bar");
     assert_eq!(s0 + s1, "FooBar");
+    assert_eq!(DynamicString::empty() + DynamicString::empty(), DynamicString::empty());
+    assert_eq!(DynamicString::empty() + "X", DynamicString::new("X"));
+    assert_eq!(DynamicString::new("X") + DynamicString::empty(), DynamicString::new("X"));
 }
 
 #[test]

@@ -45,7 +45,7 @@ impl DynamicString {
     pub fn append<T: Into<DynamicString>>(&self, other: T) -> Self {
         let other = other.into();
         match (self, &other) {
-            (DynamicString::Empty, _) | (_, DynamicString::Empty) => return DynamicString::empty(),
+            (DynamicString::Empty, s) | (s, DynamicString::Empty) => return s.clone(),
             _ => {}
         }
 
