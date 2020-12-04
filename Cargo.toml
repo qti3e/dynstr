@@ -1,6 +1,6 @@
 [package]
 name = "dynstr"
-version = "0.1.0"
+version = "0.1.1"
 license = "MIT"
 authors = ["Parsa Ghadimi <me@qti3e.com>"]
 edition = "2018"
@@ -10,7 +10,7 @@ categories = ["data-structures"]
 description="A string implementation optimized for manipulations."
 repository = "https://github.com/qti3e/dynstr/"
 homepage = "https://github.com/qti3e/dynstr/"
-documentation = "https://docs.rs/dynstr/0.1.0/dynstr/"
+documentation = "https://docs.rs/dynstr/0.1.1/dynstr/"
 
 [badges]
 github = { repository = "qti3e/dynstr" }
